@@ -6,13 +6,17 @@ from .models import User, Team, Activity, Leaderboard, Workout
 
 @api_view(['GET'])
 def api_root(request, format=None):
-    codespace_url = 'https://probable-engine-x5xxvwxrq4g9cv4jq-8000.app.github.dev'
+    # Dynamically determine the base URL
+    host = request.get_host()
+    scheme = request.scheme
+    base_url = f"{scheme}://{host}"
+
     return Response({
-        'users': f'{codespace_url}/api/users/',
-        'teams': f'{codespace_url}/api/teams/',
-        'activities': f'{codespace_url}/api/activities/',
-        'leaderboard': f'{codespace_url}/api/leaderboard/',
-        'workouts': f'{codespace_url}/api/workouts/'
+        'users': f'{base_url}/api/users/',
+        'teams': f'{base_url}/api/teams/',
+        'activities': f'{base_url}/api/activities/',
+        'leaderboard': f'{base_url}/api/leaderboard/',
+        'workouts': f'{base_url}/api/workouts/'
     })
 
 class UserViewSet(viewsets.ModelViewSet):
