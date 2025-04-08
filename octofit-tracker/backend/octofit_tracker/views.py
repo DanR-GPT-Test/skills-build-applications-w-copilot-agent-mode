@@ -11,12 +11,15 @@ def api_root(request, format=None):
     scheme = request.scheme
     base_url = f"{scheme}://{host}"
 
+    # Add the Codespace Django REST API endpoint suffix
+    api_suffix = "/api"
+
     return Response({
-        'users': f'{base_url}/api/users/',
-        'teams': f'{base_url}/api/teams/',
-        'activities': f'{base_url}/api/activities/',
-        'leaderboard': f'{base_url}/api/leaderboard/',
-        'workouts': f'{base_url}/api/workouts/'
+        'users': f'{base_url}{api_suffix}/users/',
+        'teams': f'{base_url}{api_suffix}/teams/',
+        'activities': f'{base_url}{api_suffix}/activities/',
+        'leaderboard': f'{base_url}{api_suffix}/leaderboard/',
+        'workouts': f'{base_url}{api_suffix}/workouts/'
     })
 
 class UserViewSet(viewsets.ModelViewSet):
