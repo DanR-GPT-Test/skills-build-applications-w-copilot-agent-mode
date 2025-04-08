@@ -6,7 +6,7 @@ from .models import User, Team, Activity, Leaderboard, Workout
 
 @api_view(['GET'])
 def api_root(request, format=None):
-    codespace_url = 'https://[REPLACE-THIS-WITH-YOUR-CODESPACE-NAME]-8000.app.github.dev'
+    codespace_url = 'https://probable-engine-x5xxvwxrq4g9cv4jq-8000.app.github.dev'
     return Response({
         'users': f'{codespace_url}/api/users/',
         'teams': f'{codespace_url}/api/teams/',
